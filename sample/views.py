@@ -1,0 +1,17 @@
+# Create your views here.
+import os
+from django.http import HttpResponse
+from django.utils import simplejson as json
+from pprint import pprint
+
+def ajax(request):
+	if request.is_ajax():
+		if request.method == 'GET':
+			message = "This is an XHR GET request"
+		elif request.method == 'POST':
+			# Here we can access the POST data
+			data = request.POST
+			response = {'value' : 'response from view'}
+		else:
+			message = "No XHR"
+		return HttpResponse( json.dumps(response), 'application/json' )
