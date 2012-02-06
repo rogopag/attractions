@@ -26,8 +26,9 @@ class GoogleMapsAddressWidget(widgets.TextInput):
 
 class GeocodedAddressWidget(widgets.TextInput):
 	class Media:
-		js = (settings.STATIC_URL + 'django_google_maps/js/build_box.js',
-		)
+		#js = (settings.STATIC_URL + 'django_google_maps/js/build_box.js',)
+		pass
+		
 	def render(self, name, value, attrs=None):
 		if value is None:
 			value = ''
