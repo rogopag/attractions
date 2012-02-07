@@ -11,7 +11,7 @@ class GoogleMapsAddressWidget(widgets.TextInput):
 		css = {'all': (settings.STATIC_URL + 'django_google_maps/css/google-maps-admin.css',),}
 		js = (
 			'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
-			'http://maps.google.com/maps/api/js?sensor=false',
+			'http://maps.google.com/maps/api/js?sensor=true',
 			settings.STATIC_URL + 'django_google_maps/js/google-maps-admin.js',
 		)
 

@@ -20,7 +20,9 @@ This script expects:
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
 */
-$(document).ready(function() {
+var ajaxurl = '/ajax';
+
+django.jQuery(document).ready(function($) {
     var googlemap = googleMapAdmin();
     googlemap.initialize();
 });
@@ -30,7 +32,7 @@ function googleMapAdmin() {
     var geocoder = new google.maps.Geocoder(), map, marker, overlays = new Array();
 
     var self = {
-		coords : [],
+		coordsData : null,
 		initialize: function() {
             var lat = 0;
             var lng = 0;
@@ -41,7 +43,7 @@ function googleMapAdmin() {
             if (existinglocation) {
                 lat = existinglocation[0];
                 lng = existinglocation[1];
-                zoom = 18;
+                zoom = 12;
             }
 
             var latlng = new google.maps.LatLng(lat,lng);
@@ -155,36 +157,30 @@ function googleMapAdmin() {
 			box = {'sw' : new google.maps.LatLng(lat1, lon1), 'ne' :new google.maps.LatLng(lat2, lon2) };
 			bounds = new google.maps.LatLngBounds(box.sw, box.ne);
 			
-			this.coords = [lat1, lon1, lat2, lon2];
+			this.coordsData = {'sw':[lat1, lon1], 'ne':[lat2, lon2], 'distance' : $('input[name="distance"]').val()};
 			
 			///Useful for polygon drawing
 			
-			/*boundingBoxPoints = [
+			boundingBoxPoints = [
 	            box.ne, new google.maps.LatLng(box.ne.lat(), box.sw.lng()),
 	            box.sw, new google.maps.LatLng(box.sw.lat(), box.ne.lng()), box.ne
-	         ];*/
-	
+	         ];
+			
 			/// we're using a simple rectangle so we just need sw and ne coords
-			boundingBox = new google.maps.Rectangle({
-	            bounds: bounds,
-	            strokeColor: '#FF0000',
-	            strokeOpacity: 1.0,
-	            strokeWeight: 2,
-				fillColor: '#ff0000',
-				fillOpacity: '0.30',
-				editable:true
+			boundingBox = new google.maps.Polyline({
+	            path: boundingBoxPoints,
+	            strokeColor: '#FF3311',
+	            strokeOpacity: 0.8,
+	            strokeWeight: 3,
+				editable:false
 	         });
+			
 			
 			 overlays.push( boundingBox );
 			
 			 map.fitBounds( bounds );
 			
 	         boundingBox.setMap(map);
-	
-			google.maps.event.addListener(boundingBox, 'bounds_changed', function(event) {
-			  bounds = this.getBounds();
-			 // this.coords = [bounds.getSouthWest().Oa, bounds.getSouthWest().Pa, bounds.getNorthEast().Oa, bounds.getNorthEast().Pa];
-			});
 		},
 		hasOverlays: function()
 		{
@@ -216,9 +212,30 @@ function googleMapAdmin() {
 		sendBoxCoordinatesToServer : function()
 		{
 			$('div#send-bounds').bind('mouseup', function(){
-				if(this.coords)
+				if( self.coordsData )
 				{
-					console.log( this.coords );
+					$.ajax({  
+							type: 'post',  
+							url: ajaxurl,  
+							data: self.coordsData,
+							dataType: 'text',
+							error: function(XMLHttpRequest, textStatus, errorThrown)
+							{  
+								console.log( XMLHttpRequest, textStatus, errorThrown );
+							},
+							beforeSend: function(XMLHttpRequest) 
+							{ 
+								console.log( XMLHttpRequest );
+							}, 
+							success: function( data, textStatus, jqXHR ){
+								//console.log( XMLHttpRequest, textStatus, jqXHR );
+								console.log( data );
+							},
+							complete: function( data, textStatus )
+							{
+								console.log( XMLHttpRequest, textStatus );
+							}  
+						});
 				}
 				else
 				{
