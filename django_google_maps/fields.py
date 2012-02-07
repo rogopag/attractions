@@ -19,6 +19,7 @@
 
 from django.db import models
 from django.core import exceptions
+from djangotoolbox.fields import ListField
 
 __all__ = ('AddressField', 'GeoLocationField', 'DistanceField',)
 
@@ -29,6 +30,13 @@ def typename(obj):
         return getattr(obj, '__class__').__name__
     else:
         return type(obj).__name__
+
+def formfield(self, **kwarsg): 
+     from django.forms import CharField 
+     defaults = {'form_class': CharField} 
+     defaults.update(kwargs) 
+     return super(ListField, self).formfield(**defaults)
+
 
 class GeoPt(object):
     """A geographical point."""
@@ -94,6 +102,11 @@ class DistanceField(models.FloatField):
 	pass
 
 class GeoLocationField(models.CharField):
+	pass
+	
+	 
+'''
+class GeoLocationField(models.CharField):
     """
     A geographical point, specified by floating-point latitude and longitude
     coordinates. Often used to integrate with mapping sites like Google Maps.
@@ -134,6 +147,7 @@ class GeoLocationField(models.CharField):
     def value_to_string(self, obj):
         value = self._get_val_from_obj(obj)
         return self.get_db_prep_value(value)
+'''
 
 try:
     from south.modelsinspector import add_introspection_rules

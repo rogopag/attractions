@@ -7,4 +7,5 @@ class SampleModel(models.Model):
 	address = AddressField(max_length=100)
 	distance = DistanceField(null=True, blank=True, max_length=6)
 	geolocation = GeoLocationField(blank=True)
+	location = ListField(mod)
 	
