@@ -35,7 +35,7 @@ class GeocodedAddressWidget(widgets.TextInput):
 		if value != '':
 			# Only add the 'value' attribute if a value is non-empty.
 			final_attrs['value'] = force_unicode(self._format_value(value))
-		return mark_safe(u'<input%s /><div class="build-box">BUILD BOX</div>' % flatatt(final_attrs))
+		return mark_safe(u'<input%s /><div id="build-bounds" class="build-box">BUILD BOX</div><div id="send-bounds" class="build-box">SEND BOUNDS</div>' % flatatt(final_attrs))
 
 class DistanceFieldWidget(widgets.TextInput):
 	def render(self, name, value, attrs=None):
