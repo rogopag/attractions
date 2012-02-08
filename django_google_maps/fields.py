@@ -135,6 +135,9 @@ class GeoLocationField(models.CharField):
         value = self._get_val_from_obj(obj)
         return self.get_db_prep_value(value)
 
+class GeolocationBounds(GeoLocationField):
+	  pass
+	
 try:
     from south.modelsinspector import add_introspection_rules
     add_introspection_rules([], ["^django_google_maps\.fields\.GeoLocationField"])

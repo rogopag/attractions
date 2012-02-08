@@ -34,6 +34,6 @@ def bounds(lat, lon, distance):
 		
 	return {'nw' : [lat1, lon1], 'se' :[lat2, lon2]}
 	
-#if __name__ == '__main__':
+if __name__ == '__main__':
 	#print bounds(lat, lon, distance)
 

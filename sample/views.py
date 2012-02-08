@@ -2,6 +2,7 @@
 import os
 from django.http import HttpResponse
 from django.utils import simplejson as json
+from scripts.stream import stream
 from pprint import pprint
 
 def ajax(request):
@@ -11,6 +12,8 @@ def ajax(request):
 		elif request.method == 'POST':
 			# Here we can access the POST data
 			data = request.POST
+			print q.items()
+			#stream()
 			response = {'value' : 'response from view'}
 		else:
 			message = "No XHR"

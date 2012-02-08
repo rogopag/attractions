@@ -20,3 +20,17 @@ settings.pyc
 urls.pyc
 
 views.pyc
+
+django_google_maps/fields.pyc
+
+django_google_maps/widgets.pyc
+
+sample/admin.pyc
+
+sample/models.pyc
+
+sample/scripts/__init__.pyc
+
+sample/views.pyc
+
+sample/scripts/stream.pyc

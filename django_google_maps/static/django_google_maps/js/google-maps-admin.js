@@ -214,18 +214,19 @@ function googleMapAdmin() {
 			$('div#send-bounds').bind('mouseup', function(){
 				if( self.coordsData )
 				{
+					console.log( self.coordsData )
 					$.ajax({  
 							type: 'post',  
 							url: ajaxurl,  
 							data: self.coordsData,
-							dataType: 'text',
+							dataType: 'json',
 							error: function(XMLHttpRequest, textStatus, errorThrown)
 							{  
-								console.log( XMLHttpRequest, textStatus, errorThrown );
+								console.log( textStatus, errorThrown );
 							},
 							beforeSend: function(XMLHttpRequest) 
 							{ 
-								console.log( XMLHttpRequest );
+							//	console.log( XMLHttpRequest );
 							}, 
 							success: function( data, textStatus, jqXHR ){
 								//console.log( XMLHttpRequest, textStatus, jqXHR );
@@ -233,7 +234,7 @@ function googleMapAdmin() {
 							},
 							complete: function( data, textStatus )
 							{
-								console.log( XMLHttpRequest, textStatus );
+								//console.log( data, textStatus );
 							}  
 						});
 				}
