@@ -214,11 +214,10 @@ function googleMapAdmin() {
 			$('div#send-bounds').bind('mouseup', function(){
 				if( self.coordsData )
 				{
-					console.log( self.coordsData )
 					$.ajax({  
 							type: 'post',  
 							url: ajaxurl,  
-							data: self.coordsData,
+							data: {coordinates: JSON.stringify(self.coordsData) },
 							dataType: 'json',
 							error: function(XMLHttpRequest, textStatus, errorThrown)
 							{  
@@ -226,7 +225,10 @@ function googleMapAdmin() {
 							},
 							beforeSend: function(XMLHttpRequest) 
 							{ 
-							//	console.log( XMLHttpRequest );
+								if (XMLHttpRequest && XMLHttpRequest.overrideMimeType) 
+								{
+								    XMLHttpRequest.overrideMimeType("application/j-son;charset=UTF-8");
+								}
 							}, 
 							success: function( data, textStatus, jqXHR ){
 								//console.log( XMLHttpRequest, textStatus, jqXHR );

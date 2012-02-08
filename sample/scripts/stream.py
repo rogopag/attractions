@@ -61,8 +61,11 @@ class CustomStreamListener(tweepy.StreamListener):
 		print >> sys.stderr, 'Timeout...'
 		return True # Don't kill the stream
 
-def stream( sw_lon, sw_lat, ne_lon, ne_lat ):
+def stream( coords ):
 	# Create a streaming API and set a timeout value of 60 seconds.
+	
+	LOCATION = coords['sw'][1], coords['sw'][0]
+	
 	streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=120)
 
 	# Optionally filter the statuses you want to track by providing a list
@@ -70,7 +73,7 @@ def stream( sw_lon, sw_lat, ne_lon, ne_lat ):
 
 	#print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(sys.argv[1:]),)
 
-	streaming_api.filter( follow=None, locations=LOCATIONS )
+	streaming_api.filter( follow=None, locations=LOCATION )
 	
 if __name__ == '__main__':
 	stream()
