@@ -57,6 +57,14 @@ function googleMapAdmin() {
                 self.setMarker(latlng);
             }
 
+			if( this.getExistingBounds() )
+			{
+				var box = this.getExistingBounds();
+				this.drawBounds( box );
+				this.placeVertexToBox( box );
+				this.coordsData = {'sw':[box.sw.lat(), box.sw.lng()], 'ne':[box.ne.lat(), box.ne.lng()], 'distance' : $('input[name="distance"]').val()};
+			}
+
             $("#id_address").change(function() {
 					console.log( "Changed "+$(this).val() );
 					self.codeAddress();
@@ -64,6 +72,7 @@ function googleMapAdmin() {
 				
 			this.doBoundingBox();
 			this.sendBoxCoordinatesToServer();
+			this.stopCollecting();
         },
 
         getExistingLocation: function() {
@@ -72,7 +81,18 @@ function googleMapAdmin() {
                 return geolocation.split(',');
             }
         },
-
+		getExistingBounds: function()
+		{
+			if( $('#id_bound_sw').val() && $('#id_bound_ne').val() )
+			{
+				return {'sw' : new google.maps.LatLng( $('#id_bound_sw').val().split(',')[0], $('#id_bound_sw').val().split(',')[1] ), 'ne' :new google.maps.LatLng( $('#id_bound_ne').val().split(',')[0], $('#id_bound_ne').val().split(',')[1] ) };
+			}
+			else
+			{
+				return false;
+			}
+				
+		},
         codeAddress: function() {
             var address = $("#id_address").val();
             geocoder.geocode({'address': address}, function(results, status) {
@@ -126,7 +146,7 @@ function googleMapAdmin() {
 		bounds: function(lat, lon, distance)
 		{
 			/// declare vars 
-			var distance = parseFloat(distance), radius = 3963.1, north = 0, south = 180, east = 90, west = 270, lat_r = parseFloat(lat).radians(), lon_r = parseFloat(lon).radians(), northmost, southmost, eastmost, westmost, lat1, lat2, lon1, lon2, box, bounds, boundingBoxPoints, boundingBox;
+			var distance = parseFloat(distance), radius = 3963.1, north = 0, south = 180, east = 90, west = 270, lat_r = parseFloat(lat).radians(), lon_r = parseFloat(lon).radians(), northmost, southmost, eastmost, westmost, lat1, lat2, lon1, lon2, box;
 			
 			northmost = ( Math.asin( Math.sin(lat_r) * Math.cos( distance / radius ) + Math.cos(lat_r) * Math.sin( distance / radius ) * Math.cos(north) ) ).degrees();
 			southmost = ( Math.asin( Math.sin(lat_r) * Math.cos( distance / radius ) + Math.cos(lat_r) * Math.sin( distance / radius ) * Math.cos(south) ) ).degrees();
@@ -155,11 +175,32 @@ function googleMapAdmin() {
 				lon2 = westmost;
 			}	
 			box = {'sw' : new google.maps.LatLng(lat1, lon1), 'ne' :new google.maps.LatLng(lat2, lon2) };
-			bounds = new google.maps.LatLngBounds(box.sw, box.ne);
+			
+			//for debug purposes check the bounds visually on the map
+			
 			
 			this.coordsData = {'sw':[lat1, lon1], 'ne':[lat2, lon2], 'distance' : $('input[name="distance"]').val()};
 			
 			///Useful for polygon drawing
+			this.drawBounds( box );
+			
+		},
+		placeVertexToBox: function(box)
+		{
+			for(var c in box)
+			{
+				var marker = new google.maps.Marker({
+				      position: box[c],
+				      map: map,
+				      title: box[c].toString()
+				  });
+			}
+		},
+		drawBounds: function( box )
+		{
+			var bounds, boundingBoxPoints, boundingBox;
+			
+			bounds = new google.maps.LatLngBounds(box.sw, box.ne);
 			
 			boundingBoxPoints = [
 	            box.ne, new google.maps.LatLng(box.ne.lat(), box.sw.lng()),
@@ -174,8 +215,7 @@ function googleMapAdmin() {
 	            strokeWeight: 3,
 				editable:false
 	         });
-			
-			
+		
 			 overlays.push( boundingBox );
 			
 			 map.fitBounds( bounds );
@@ -199,6 +239,9 @@ function googleMapAdmin() {
 				};
 				
 				self.bounds( args.lat, args.lon, args.distance );
+				
+				$('#id_bound_sw').val( self.coordsData.sw );
+				$('#id_bound_ne').val( self.coordsData.ne );
 
 			});
 		},
@@ -209,6 +252,37 @@ function googleMapAdmin() {
 				while( overlays[0] ) overlays.pop().setMap(null) ;
 			}
 		},
+		stopCollecting: function()
+		{
+			$('div#stop-collecting').bind('mouseup', function(){
+				
+					$.ajax({  
+							type: 'post',  
+							url: ajaxurl,  
+							data: {command: JSON.stringify( {'stop':'stop'} ) },
+							dataType: 'json',
+							error: function(XMLHttpRequest, textStatus, errorThrown)
+							{  
+								console.log( textStatus, errorThrown );
+							},
+							beforeSend: function(XMLHttpRequest) 
+							{ 
+								if (XMLHttpRequest && XMLHttpRequest.overrideMimeType) 
+								{
+								    XMLHttpRequest.overrideMimeType("application/j-son;charset=UTF-8");
+								}
+							}, 
+							success: function( data, textStatus, jqXHR ){
+								//console.log( XMLHttpRequest, textStatus, jqXHR );
+								console.log( data );
+							},
+							complete: function( data, textStatus )
+							{
+								//console.log( data, textStatus );
+							}  
+						});
+					});
+		},
 		sendBoxCoordinatesToServer : function()
 		{
 			$('div#send-bounds').bind('mouseup', function(){
@@ -217,7 +291,7 @@ function googleMapAdmin() {
 					$.ajax({  
 							type: 'post',  
 							url: ajaxurl,  
-							data: {coordinates: JSON.stringify(self.coordsData) },
+							data: {command: JSON.stringify(self.coordsData) },
 							dataType: 'json',
 							error: function(XMLHttpRequest, textStatus, errorThrown)
 							{  

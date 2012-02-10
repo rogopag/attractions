@@ -34,3 +34,19 @@ sample/scripts/__init__.pyc
 sample/views.pyc
 
 sample/scripts/stream.pyc
+
+django_google_maps/fields.pyc
+
+django_google_maps/fields.pyc
+
+django_google_maps/widgets.pyc
+
+sample/admin.pyc
+
+sample/models.pyc
+
+sample/views.pyc
+
+settings.pyc
+
+urls.pyc

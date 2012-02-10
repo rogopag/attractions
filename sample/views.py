@@ -11,8 +11,7 @@ def ajax(request):
 			message = "This is an XHR GET request"
 		elif request.method == 'POST':
 			# Here we can access the POST data
-			data = json.JSONDecoder().decode( request.POST['coordinates'] )
-			#pprint( type(data) )
+			data = json.JSONDecoder().decode( request.POST['command'] )
 			stream( data )
 			response = {'value' : 'response from view'}
 		else:

@@ -61,11 +61,22 @@ class CustomStreamListener(tweepy.StreamListener):
 		print >> sys.stderr, 'Timeout...'
 		return True # Don't kill the stream
 
-def stream( coords ):
+def stream( coords = {} ):
 	# Create a streaming API and set a timeout value of 60 seconds.
+	try:
+		stop = coords['stop']
+		raise SystemExit('stop collecting and exit')
+	except KeyError:
+		print 'Start collecting'
 	
-	LOCATION = coords['sw'][1], coords['sw'][0]
-	
+	try:
+		LOCATIONS = coords['sw'][1], coords['sw'][0], coords['ne'][1], coords['ne'][0]
+		#print LOCATIONS
+	except:
+		#default to Turin area 15miles radius
+		LOCATIONS = 7.40888682759915, 44.806386501450021, 8.0660042459720618, 45.50071940788586
+		#8print LOCATIONS
+		
 	streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=120)
 
 	# Optionally filter the statuses you want to track by providing a list
@@ -73,7 +84,7 @@ def stream( coords ):
 
 	#print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(sys.argv[1:]),)
 
-	streaming_api.filter( follow=None, locations=LOCATION )
+	streaming_api.filter( follow=None, track=Q, locations=LOCATIONS)
 	
 if __name__ == '__main__':
 	stream()
