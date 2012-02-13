@@ -40,6 +40,7 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 # webbrowser.open(auth_url)
 # verifier = raw_input('PIN: ').strip()
 # auth.get_access_token(verifier)
+results = []
 
 class CustomStreamListener(tweepy.StreamListener):
 	def on_status(self, status):
@@ -48,7 +49,7 @@ class CustomStreamListener(tweepy.StreamListener):
 		# suitable for capturing to a flat file but you could opt 
 		# store them elsewhere, retweet select statuses, etc.
 		try:
-			pprint([status.id, status.user.screen_name, status.text, status.created_at, status.user.screen_name, status.user.location, status.user.name, status.user.time_zone, status.created_at, status.place])
+			results.append([status.id, status.user.screen_name, status.text, status.created_at, status.user.screen_name, status.user.location, status.user.name, status.user.time_zone, status.created_at, status.place])
 		except Exception, e:
 			print >> sys.stderr, 'Encountered Exception:', e
 			pass
@@ -85,6 +86,7 @@ def stream( coords = {} ):
 	#print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(sys.argv[1:]),)
 
 	streaming_api.filter( follow=None, track=Q, locations=LOCATIONS)
+	return results
 	
 if __name__ == '__main__':
 	stream()
