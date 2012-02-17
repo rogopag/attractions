@@ -1,7 +1,7 @@
-from celery.decorators import task
-from pprint import pprint
+from celery.task.schedules import crontab
+from celery.decorators import periodic_task
 
-@task()
-def add(x, y):
-	pprint("executing task")
-	return x + y
+# this will run every minute, see http://celeryproject.org/docs/reference/celery.task.schedules.html#celery.task.schedules.crontab
+@periodic_task(run_every=crontab(hour="*", minute="*", day_of_week="*"))
+def add( ):	
+	print "firing test task"

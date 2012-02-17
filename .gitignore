@@ -66,3 +66,7 @@ sample/views.pyc
 settings.pyc
 
 sample/tasks.pyc
+
+sample/admin.pyc
+
+settings.pyc

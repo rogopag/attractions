@@ -12,8 +12,9 @@ def ajax(request):
 		elif request.method == 'POST':
 			# Here we can access the POST data
 			data = json.JSONDecoder().decode( request.POST['command'] )
-			result = add.delay(4, 4)
-			r = result.get()
+			#result = add.delay(4, 4)
+			#r = result.get()
+			r = 'foo'
 			response = {'value' : r}
 		else:
 			message = "No XHR"
