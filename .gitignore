@@ -70,3 +70,25 @@ sample/tasks.pyc
 sample/admin.pyc
 
 settings.pyc
+
+sample/__init__.pyc
+
+sample/__init__.pyc
+
+sample/__init__.pyc
+
+sample/admin.pyc
+
+sample/models.pyc
+
+sample/scripts/__init__.pyc
+
+sample/scripts/bounds.pyc
+
+sample/views.pyc
+
+sample/tasks/__init__.pyc
+
+sample/tasks/add.pyc
+
+.gitignore

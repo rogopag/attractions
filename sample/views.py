@@ -2,8 +2,9 @@
 import os
 from django.http import HttpResponse
 from django.utils import simplejson as json
-from tasks import add
+from sample.tasks.stream import StreamTask
 from pprint import pprint
+
 
 def ajax(request):
 	if request.is_ajax():
@@ -12,9 +13,9 @@ def ajax(request):
 		elif request.method == 'POST':
 			# Here we can access the POST data
 			data = json.JSONDecoder().decode( request.POST['command'] )
-			#result = add.delay(4, 4)
-			#r = result.get()
-			r = 'foo'
+			result = StreamTask.delay(data)
+			result.wait()
+			r = result.get()
 			response = {'value' : r}
 		else:
 			message = "No XHR"

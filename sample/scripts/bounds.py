@@ -36,4 +36,3 @@ def bounds(lat, lon, distance):
 	
 if __name__ == '__main__':
 	#print bounds(lat, lon, distance)
-
