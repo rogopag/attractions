@@ -100,7 +100,6 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 # webbrowser.open(auth_url)
 # verifier = raw_input('PIN: ').strip()
 # auth.get_access_token(verifier)
-results = []
 
 class CustomStreamListener(tweepy.StreamListener):
 	def on_status(self, status):
@@ -109,8 +108,9 @@ class CustomStreamListener(tweepy.StreamListener):
 		# suitable for capturing to a flat file but you could opt 
 		# store them elsewhere, retweet select statuses, etc.
 		try:
-			results.append([status.id, status.user.screen_name, status.text, status.created_at, status.user.screen_name, status.user.location, status.user.name, status.user.time_zone, status.created_at, status.place])
-			return results
+			stream.results.append([status.id, status.user.screen_name, status.text, status.created_at, status.user.screen_name, status.user.location, status.user.name, status.user.time_zone, status.created_at, status.place])
+			print stream.results
+			return stream.results
 		except Exception, e:
 			print >> sys.stderr, 'Encountered Exception:', e
 			pass
@@ -125,13 +125,13 @@ class CustomStreamListener(tweepy.StreamListener):
 
 def stream( coords = {} ):
 	# Create a streaming API and set a timeout value of 60 seconds.
-	streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=120)
+	stream.streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=120)
 	
 	try:
 		stop = coords['stop']
-		streaming_api.disconnect()
+		tweepy.streaming.Stream.disconnect(stream.streaming_api)
 		print "Stop collecting"
-		return stop
+		return stream.results
 	except KeyError:
 		print  'Start collecting'
 	
@@ -146,5 +146,8 @@ def stream( coords = {} ):
 	# of users to "follow".
 
 	#print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(sys.argv[1:]),
-	streaming_api.filter( follow=None, track=Q, async=True, locations=LOCATIONS)
-	return 'start'
+	stream.streaming_api.filter( follow=None, track=Q, async=True, locations=LOCATIONS)
+	return stream.results
+	
+stream.results = []
+stream.streaming_api = object()
