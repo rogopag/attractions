@@ -63,67 +63,20 @@ class thread_looper(threading.Thread):
 			self.function(*self.args, **self.kwargs)
 
 class TweetStream(tweepy.streaming.Stream):
-	conn = None
 	thread = None
 	
 	def _start(self, async):
 		self.running = True
 		if async:
-			self.thread = thread_looper( 0.1, self._run )
-			self.thread.start()
+			TweetStream.thread = thread_looper( 0.1, self._run )
+			TweetStream.thread.start()
 		else:
 			self._run()
 			
 	def stop(self):
 		self.running = False
-		self.thread.stop()
-		return False
-		
-	def _run(self):
-		url = "%s://%s%s" % (self.scheme, self.host, self.url)
-		print "Triggered start " + str(url)
-		error_counter = 0
-		exception = None
-		print "foooo "+str(self.running)
-		while self.running:
-			if self.retry_count is not None and error_counter > self.retry_count:
-				# quit if error count greater than retry count
-				break
-			try:
-				print "now you should connect with " + str( self.scheme )
-				if self.scheme == "http":
-					self.conn = httplib.HTTPConnection(self.host)
-				else:
-					self.conn = httplib.HTTPSConnection(self.host)
-				self.auth.apply_auth(url, 'POST', self.headers, self.parameters)
-				self.conn.connect()
-				self.conn.sock.settimeout(self.timeout)
-				self.conn.request('POST', self.url, self.body, headers=self.headers)
-				resp = self.conn.getresponse()
-				if resp.status != 200:
-					if self.listener.on_error(resp.status) is False:
-						break
-					error_counter += 1
-					sleep(self.retry_time)
-				else:
-					error_counter = 0
-					self._read_loop(resp)
-			except timeout:
-				if self.listener.on_timeout() == False:
-					break
-				if self.running is False:
-					break
-				self.conn.close()
-				sleep(self.snooze_time)
-			except Exception, exception:
-				# any other exception is fatal, so kill loop
-				break
-		# cleanup
-		  	self.running = False
-		  	if self.conn:
-				self.conn.close()
-		  	if exception:
-				raise			
+		TweetStream.thread.stop()
+		return False			
 
 class CustomStreamListener(tweepy.StreamListener):
 	def on_status(self, status):
