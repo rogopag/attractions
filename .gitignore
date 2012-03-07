@@ -108,3 +108,5 @@ views.pyc
 sample/tasks/stream.pyc
 
 sample/views.pyc
+
+dump.rdb
