@@ -87,6 +87,9 @@ class GeoPt(object):
 			)
 		return geo_part
 
+class SampleTaskField(models.CharField):
+	pass
+
 class NameField(models.CharField):
 	pass
 
@@ -148,5 +151,6 @@ try:
 	add_introspection_rules([], ["^django_google_maps\.fields\.AddressField"])
 	add_introspection_rules([], ["^django_google_maps\.fields\.DistanceField"])
 	add_introspection_rules([], ["^django_google_maps\.fields\.BoundsField"])
+	add_introspection_rules([], ["^django_google_maps\.fields\.SampleTaskField"])
 except ImportError:
 	pass

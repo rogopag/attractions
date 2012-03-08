@@ -112,3 +112,19 @@ sample/views.pyc
 dump.rdb
 
 dump.rdb
+
+django_google_maps/fields.pyc
+
+django_google_maps/widgets.pyc
+
+dump.rdb
+
+sample/admin.pyc
+
+sample/models.pyc
+
+sample/tasks/stream.pyc
+
+sample/views.pyc
+
+urls.pyc

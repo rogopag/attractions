@@ -79,6 +79,7 @@ class TweetStream(tweepy.streaming.Stream):
 		return False			
 
 class CustomStreamListener(tweepy.StreamListener):
+	counter = 0
 	def on_status(self, status):
 		
 		# We'll simply print some values in a tab-delimited format
@@ -86,7 +87,8 @@ class CustomStreamListener(tweepy.StreamListener):
 		# store them elsewhere, retweet select statuses, etc.
 		try:
 			StreamManage.results.append([status.id, status.user.screen_name, status.text, status.created_at, status.user.screen_name, status.user.location, status.user.name, status.user.time_zone, status.created_at, status.place])
-			print StreamManage.results
+			CustomStreamListener.counter += 1
+			print "Executed Call to twitter number %s" % CustomStreamListener.counter
 			return StreamManage.results
 		except Exception, e:
 			print >> sys.stderr, 'Encountered Exception:', e

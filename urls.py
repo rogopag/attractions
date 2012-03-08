@@ -1,11 +1,11 @@
 from django.conf.urls.defaults import patterns, include, url
-
+from sample.views import AjaxView
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^ajax', 'attractions.sample.views.ajax', name="ajax"),
+	url(r'^ajax', AjaxView.as_view(), name="ajax"),
 	url(r'^$', 'attractions.views.home', name='home'),
 	# url(r'^attractions/', include('attractions.foo.urls')),
 
