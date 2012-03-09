@@ -294,6 +294,8 @@ function googleMapAdmin() {
 							//console.log( XMLHttpRequest, textStatus, jqXHR );
 							console.log( data );
 							$('input[name="sample_task"]').val('');
+							delete self.coordsData.stop;
+							delete self.coordsData.sample_task;
 						},
 						complete: function( data, textStatus )
 						{

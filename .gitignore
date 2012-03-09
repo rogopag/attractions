@@ -128,3 +128,5 @@ sample/tasks/stream.pyc
 sample/views.pyc
 
 urls.pyc
+
+sample/views.pyc

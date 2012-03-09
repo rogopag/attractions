@@ -20,27 +20,31 @@ class AjaxView(View):
 			data = json.JSONDecoder().decode( request.POST['command'] )
 			task = StreamTask()
 			obj = SampleModel.objects.get(bound_name=data['name'])
-			print "object id is %s" % str( obj.sample_task ) 
+			pprint(data)
+			#print "object id is %s" % str( obj.sample_task ) 
 			try:
-				sample_task = data['sample_task']
 				action = data['stop']
+				sample_task = data['sample_task']
+				print "ok got the stop key foo"
+				return HttpResponse( json.dumps({'fuck':'bar'}), 'application/json' )	
 				result = task.apply_async(args=[data])
 				abortable_async_result = AbortableAsyncResult(sample_task)
 				abortable_async_result.abort()
 				obj.sample_task = u''
 				obj.save()
-			except KeyError:		
+			except KeyError, e:
+				print "Key not present "
+				return HttpResponse( json.dumps({'fuck':'foo'}), 'application/json' )		
 				result = task.apply_async(args=[data])
 				obj.sample_task = result.task_id
 				obj.save()
 				print "task id should be %s" % result.task_id
 			result.wait()
 			r = result.get()
+			print "type of r is %s " % type(r)
+			print "result value should be %s" % r
 			response = {'value' : r, 'sample_task' : obj.sample_task}
 		else:
 			message = "No XHR"
 		return HttpResponse( json.dumps(response), 'application/json' )
-		
-	def task_manager( self, data, db_action ):
-		
 		
