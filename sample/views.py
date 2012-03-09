@@ -19,20 +19,28 @@ class AjaxView(View):
 					# Here we can access the POST data
 			data = json.JSONDecoder().decode( request.POST['command'] )
 			task = StreamTask()
-			pprint( SampleModel.objects.get(id='4f3154b34a69092c30000001') )
+			obj = SampleModel.objects.get(bound_name=data['name'])
+			print "object id is %s" % str( obj.sample_task ) 
 			try:
+				sample_task = data['sample_task']
 				action = data['stop']
 				result = task.apply_async(args=[data])
-				abortable_async_result = AbortableAsyncResult(result.task_id)
+				abortable_async_result = AbortableAsyncResult(sample_task)
 				abortable_async_result.abort()
-			except KeyError, e:		
+				obj.sample_task = u''
+				obj.save()
+			except KeyError:		
 				result = task.apply_async(args=[data])
+				obj.sample_task = result.task_id
+				obj.save()
 				print "task id should be %s" % result.task_id
 			result.wait()
 			r = result.get()
-			print "result value should be %s" % r
-			response = {'value' : r}
+			response = {'value' : r, 'sample_task' : obj.sample_task}
 		else:
 			message = "No XHR"
 		return HttpResponse( json.dumps(response), 'application/json' )
+		
+	def task_manager( self, data, db_action ):
+		
 		
