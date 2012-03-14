@@ -130,3 +130,15 @@ sample/views.pyc
 urls.pyc
 
 sample/views.pyc
+
+django_google_maps/fields.pyc
+
+django_google_maps/fields.pyc
+
+sample/admin.pyc
+
+sample/models.pyc
+
+sample/tasks/stream.pyc
+
+sample/views.pyc

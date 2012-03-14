@@ -86,7 +86,7 @@ class GeoPt(object):
 				'Expected float, received %s (a %s).' % (geo_part, typename(geo_part))
 			)
 		return geo_part
-
+	
 class SampleTaskField(models.CharField):
 	pass
 
