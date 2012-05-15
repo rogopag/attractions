@@ -1,0 +1,310 @@
+[2012-02-29 20:26:36,167: WARNING/MainProcess] -------------- celery@Squirrel.local v2.5.0
+---- **** -----
+--- * ***  * -- [Configuration]
+-- * - **** ---   . broker:      redis://localhost:6379/0
+- ** ----------   . loader:      djcelery.loaders.DjangoLoader
+- ** ----------   . logfile:     /Users/rogopag/Desktop/JOBSTEMP/DEV/attractions_rel/attractions_rel/sample/tasks/celery.log@DEBUG
+- ** ----------   . concurrency: 2
+- ** ----------   . events:      OFF
+- *** --- * ---   . beat:        OFF
+-- ******* ----
+--- ***** ----- [Queues]
+ --------------   . celery:      exchange:celery (direct) binding:celery
+                  
+
+[Tasks]
+  . celery.backend_cleanup
+  . celery.chord
+  . celery.chord_unlock
+  . sample.tasks.add.Add
+[2012-02-29 20:26:36,168: DEBUG/MainProcess] [Worker] Loading modules.
+[2012-02-29 20:26:36,171: DEBUG/MainProcess] [Worker] Claiming components.
+[2012-02-29 20:26:36,172: DEBUG/MainProcess] [Worker] Building boot step graph.
+[2012-02-29 20:26:36,172: DEBUG/MainProcess] [Worker] New boot order: ['queues', 'pool', 'mediator', 'beat', 'autoreloader', 'timers', 'state-db', 'autoscaler', 'consumer']
+[2012-02-29 20:26:36,174: DEBUG/MainProcess] Starting celery.concurrency.processes.TaskPool...
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 11
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 11
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 12
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 12
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 15
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 15
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 16
+[2012-02-29 20:26:36,177: DEBUG/MainProcess] created semlock with handle 16
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 17
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 17
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 18
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 18
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 19
+[2012-02-29 20:26:36,178: DEBUG/MainProcess] created semlock with handle 19
+[2012-02-29 20:26:36,179: DEBUG/MainProcess] created semlock with handle 20
+[2012-02-29 20:26:36,179: DEBUG/MainProcess] created semlock with handle 20
+[2012-02-29 20:26:36,179: DEBUG/MainProcess] created semlock with handle 21
+[2012-02-29 20:26:36,179: DEBUG/MainProcess] created semlock with handle 21
+[2012-02-29 20:26:36,182: DEBUG/MainProcess] created semlock with handle 22
+[2012-02-29 20:26:36,182: DEBUG/MainProcess] created semlock with handle 22
+[2012-02-29 20:26:36,183: DEBUG/MainProcess] created semlock with handle 23
+[2012-02-29 20:26:36,183: DEBUG/MainProcess] created semlock with handle 23
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 24
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 24
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 25
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 25
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 26
+[2012-02-29 20:26:36,184: DEBUG/MainProcess] created semlock with handle 26
+[2012-02-29 20:26:36,185: INFO/PoolWorker-1] child process calling self.run()
+[2012-02-29 20:26:36,185: INFO/PoolWorker-1] child process calling self.run()
+[2012-02-29 20:26:36,192: DEBUG/MainProcess] worker handler starting
+[2012-02-29 20:26:36,192: DEBUG/MainProcess] worker handler starting
+[2012-02-29 20:26:36,192: INFO/PoolWorker-2] child process calling self.run()
+[2012-02-29 20:26:36,192: INFO/PoolWorker-2] child process calling self.run()
+[2012-02-29 20:26:36,195: DEBUG/MainProcess] result handler starting
+[2012-02-29 20:26:36,195: DEBUG/MainProcess] result handler starting
+[2012-02-29 20:26:36,196: DEBUG/MainProcess] celery.concurrency.processes.TaskPool OK!
+[2012-02-29 20:26:36,196: DEBUG/MainProcess] Starting celery.worker.mediator.Mediator...
+[2012-02-29 20:26:36,197: DEBUG/MainProcess] celery.worker.mediator.Mediator OK!
+[2012-02-29 20:26:36,197: DEBUG/MainProcess] Starting celery.worker.consumer.Consumer...
+[2012-02-29 20:26:36,197: WARNING/MainProcess] celery@Squirrel.local has started.
+[2012-02-29 20:26:36,198: DEBUG/MainProcess] Consumer: Re-establishing connection to the broker...
+[2012-02-29 20:26:36,202: DEBUG/MainProcess] Consumer: Connection established.
+[2012-02-29 20:26:36,203: DEBUG/MainProcess] basic.qos: prefetch_count->8
+[2012-02-29 20:26:36,209: DEBUG/MainProcess] Consumer: Starting message consumer...
+[2012-02-29 20:26:36,209: DEBUG/MainProcess] Consumer: Ready to accept tasks!
+[2012-02-29 20:26:41,343: WARNING/MainProcess] celeryd: Hitting Ctrl+C again will terminate all running tasks!
+[2012-02-29 20:26:41,343: WARNING/MainProcess] celeryd: Warm shutdown (MainProcess)
+[2012-02-29 20:26:41,344: DEBUG/MainProcess] Stopping celery.worker.consumer.Consumer...
+[2012-02-29 20:26:41,344: DEBUG/MainProcess] Consumer: Stopping consumers...
+[2012-02-29 20:26:41,344: DEBUG/MainProcess] Stopping celery.worker.mediator.Mediator...
+[2012-02-29 20:26:42,199: DEBUG/MainProcess] Stopping celery.concurrency.processes.TaskPool...
+[2012-02-29 20:26:42,199: DEBUG/MainProcess] closing pool
+[2012-02-29 20:26:42,199: DEBUG/MainProcess] closing pool
+[2012-02-29 20:26:42,595: DEBUG/MainProcess] worker handler exiting
+[2012-02-29 20:26:42,595: DEBUG/MainProcess] worker handler exiting
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] joining worker handler
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] joining worker handler
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] task handler got sentinel
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] task handler got sentinel
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] task handler sending sentinel to result handler
+[2012-02-29 20:26:42,596: DEBUG/MainProcess] task handler sending sentinel to result handler
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] task handler sending sentinel to workers
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] task handler sending sentinel to workers
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] task handler exiting
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] task handler exiting
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] worker got sentinel -- exiting
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] worker got sentinel -- exiting
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] worker exiting after 0 tasks
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] worker exiting after 0 tasks
+[2012-02-29 20:26:42,598: INFO/PoolWorker-1] process shutting down
+[2012-02-29 20:26:42,598: INFO/PoolWorker-1] process shutting down
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,598: DEBUG/PoolWorker-1] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,599: DEBUG/PoolWorker-1] running the remaining "atexit" finalizers
+[2012-02-29 20:26:42,599: DEBUG/PoolWorker-1] running the remaining "atexit" finalizers
+[2012-02-29 20:26:42,599: INFO/PoolWorker-1] process exiting with exitcode 0
+[2012-02-29 20:26:42,599: INFO/PoolWorker-1] process exiting with exitcode 0
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] result handler got sentinel
+[2012-02-29 20:26:42,597: DEBUG/MainProcess] result handler got sentinel
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] ensuring that outqueue is not full
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] ensuring that outqueue is not full
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] result handler exiting: len(cache)=0, thread._state=0
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] result handler exiting: len(cache)=0, thread._state=0
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:26:42,601: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:26:42,601: DEBUG/PoolWorker-2] worker got sentinel -- exiting
+[2012-02-29 20:26:42,601: DEBUG/PoolWorker-2] worker got sentinel -- exiting
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] result handler joined
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] result handler joined
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] worker exiting after 0 tasks
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] worker exiting after 0 tasks
+[2012-02-29 20:26:42,602: INFO/PoolWorker-2] process shutting down
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] joining worker 0/2 (<Process(PoolWorker-1, stopped daemon)>)
+[2012-02-29 20:26:42,602: INFO/PoolWorker-2] process shutting down
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] joining worker 0/2 (<Process(PoolWorker-1, stopped daemon)>)
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] joining worker 1/2 (<Process(PoolWorker-2, started daemon)>)
+[2012-02-29 20:26:42,602: DEBUG/MainProcess] joining worker 1/2 (<Process(PoolWorker-2, started daemon)>)
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] running the remaining "atexit" finalizers
+[2012-02-29 20:26:42,602: DEBUG/PoolWorker-2] running the remaining "atexit" finalizers
+[2012-02-29 20:26:42,603: INFO/PoolWorker-2] process exiting with exitcode 0
+[2012-02-29 20:26:42,603: INFO/PoolWorker-2] process exiting with exitcode 0
+[2012-02-29 20:26:42,604: DEBUG/MainProcess] Consumer: Closing consumer channel...
+[2012-02-29 20:26:42,605: DEBUG/MainProcess] Consumer: Closing broadcast channel...
+[2012-02-29 20:26:42,606: DEBUG/MainProcess] Consumer: Closing broker connection...
+[2012-02-29 20:26:42,608: INFO/MainProcess] process shutting down
+[2012-02-29 20:26:42,608: INFO/MainProcess] process shutting down
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] finalizing pool
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] finalizing pool
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] helping task handler/workers to finish
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] helping task handler/workers to finish
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2012-02-29 20:26:42,609: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] terminating workers
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] terminating workers
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining pool workers
+[2012-02-29 20:26:42,610: DEBUG/MainProcess] joining pool workers
+[2012-02-29 20:26:42,611: DEBUG/MainProcess] pool workers joined
+[2012-02-29 20:26:42,611: DEBUG/MainProcess] pool workers joined
+[2012-02-29 20:26:42,611: DEBUG/MainProcess] running the remaining "atexit" finalizers
+[2012-02-29 20:26:42,611: DEBUG/MainProcess] running the remaining "atexit" finalizers
+[2012-02-29 20:28:00,658: WARNING/MainProcess] -------------- celery@Squirrel.local v2.5.0
+---- **** -----
+--- * ***  * -- [Configuration]
+-- * - **** ---   . broker:      redis://localhost:6379/0
+- ** ----------   . loader:      djcelery.loaders.DjangoLoader
+- ** ----------   . logfile:     /Users/rogopag/Desktop/JOBSTEMP/DEV/attractions_rel/attractions_rel/sample/tasks/celery.log@DEBUG
+- ** ----------   . concurrency: 2
+- ** ----------   . events:      OFF
+- *** --- * ---   . beat:        OFF
+-- ******* ----
+--- ***** ----- [Queues]
+ --------------   . celery:      exchange:celery (direct) binding:celery
+                  
+
+[Tasks]
+  . celery.backend_cleanup
+  . celery.chord
+  . celery.chord_unlock
+  . sample.tasks.add.Add
+[2012-02-29 20:28:00,659: DEBUG/MainProcess] [Worker] Loading modules.
+[2012-02-29 20:28:00,661: DEBUG/MainProcess] [Worker] Claiming components.
+[2012-02-29 20:28:00,662: DEBUG/MainProcess] [Worker] Building boot step graph.
+[2012-02-29 20:28:00,662: DEBUG/MainProcess] [Worker] New boot order: ['queues', 'pool', 'mediator', 'beat', 'autoreloader', 'timers', 'state-db', 'autoscaler', 'consumer']
+[2012-02-29 20:28:00,664: DEBUG/MainProcess] Starting celery.concurrency.processes.TaskPool...
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 11
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 11
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 12
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 12
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 15
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 15
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 16
+[2012-02-29 20:28:00,666: DEBUG/MainProcess] created semlock with handle 16
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 17
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 17
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 18
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 18
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 19
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 19
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 20
+[2012-02-29 20:28:00,667: DEBUG/MainProcess] created semlock with handle 20
+[2012-02-29 20:28:00,668: DEBUG/MainProcess] created semlock with handle 21
+[2012-02-29 20:28:00,668: DEBUG/MainProcess] created semlock with handle 21
+[2012-02-29 20:28:00,671: DEBUG/MainProcess] created semlock with handle 22
+[2012-02-29 20:28:00,671: DEBUG/MainProcess] created semlock with handle 22
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 23
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 23
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 24
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 24
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 25
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 25
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 26
+[2012-02-29 20:28:00,674: DEBUG/MainProcess] created semlock with handle 26
+[2012-02-29 20:28:00,682: INFO/PoolWorker-1] child process calling self.run()
+[2012-02-29 20:28:00,682: INFO/PoolWorker-1] child process calling self.run()
+[2012-02-29 20:28:00,696: INFO/PoolWorker-2] child process calling self.run()
+[2012-02-29 20:28:00,696: INFO/PoolWorker-2] child process calling self.run()
+[2012-02-29 20:28:00,700: DEBUG/MainProcess] worker handler starting
+[2012-02-29 20:28:00,700: DEBUG/MainProcess] worker handler starting
+[2012-02-29 20:28:00,703: DEBUG/MainProcess] result handler starting
+[2012-02-29 20:28:00,703: DEBUG/MainProcess] celery.concurrency.processes.TaskPool OK!
+[2012-02-29 20:28:00,703: DEBUG/MainProcess] result handler starting
+[2012-02-29 20:28:00,703: DEBUG/MainProcess] Starting celery.worker.mediator.Mediator...
+[2012-02-29 20:28:00,704: DEBUG/MainProcess] celery.worker.mediator.Mediator OK!
+[2012-02-29 20:28:00,704: DEBUG/MainProcess] Starting celery.worker.consumer.Consumer...
+[2012-02-29 20:28:00,705: WARNING/MainProcess] celery@Squirrel.local has started.
+[2012-02-29 20:28:00,705: DEBUG/MainProcess] Consumer: Re-establishing connection to the broker...
+[2012-02-29 20:28:00,711: DEBUG/MainProcess] Consumer: Connection established.
+[2012-02-29 20:28:00,712: DEBUG/MainProcess] basic.qos: prefetch_count->8
+[2012-02-29 20:28:00,717: DEBUG/MainProcess] Consumer: Starting message consumer...
+[2012-02-29 20:28:00,717: DEBUG/MainProcess] Consumer: Ready to accept tasks!
+[2012-02-29 20:28:05,128: WARNING/MainProcess] celeryd: Hitting Ctrl+C again will terminate all running tasks!
+[2012-02-29 20:28:05,128: WARNING/MainProcess] celeryd: Warm shutdown (MainProcess)
+[2012-02-29 20:28:05,128: DEBUG/MainProcess] Stopping celery.worker.consumer.Consumer...
+[2012-02-29 20:28:05,129: DEBUG/MainProcess] Consumer: Stopping consumers...
+[2012-02-29 20:28:05,129: DEBUG/MainProcess] Stopping celery.worker.mediator.Mediator...
+[2012-02-29 20:28:05,706: DEBUG/MainProcess] Stopping celery.concurrency.processes.TaskPool...
+[2012-02-29 20:28:05,707: DEBUG/MainProcess] closing pool
+[2012-02-29 20:28:05,707: DEBUG/MainProcess] closing pool
+[2012-02-29 20:28:06,304: DEBUG/MainProcess] worker handler exiting
+[2012-02-29 20:28:06,304: DEBUG/MainProcess] worker handler exiting
+[2012-02-29 20:28:06,305: DEBUG/MainProcess] joining worker handler
+[2012-02-29 20:28:06,305: DEBUG/MainProcess] joining worker handler
+[2012-02-29 20:28:06,305: DEBUG/MainProcess] task handler got sentinel
+[2012-02-29 20:28:06,305: DEBUG/MainProcess] task handler got sentinel
+[2012-02-29 20:28:06,306: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:28:06,306: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:28:06,306: DEBUG/MainProcess] task handler sending sentinel to result handler
+[2012-02-29 20:28:06,306: DEBUG/MainProcess] task handler sending sentinel to result handler
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] task handler sending sentinel to workers
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] task handler sending sentinel to workers
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] result handler got sentinel
+[2012-02-29 20:28:06,307: DEBUG/PoolWorker-2] worker got sentinel -- exiting
+[2012-02-29 20:28:06,307: DEBUG/PoolWorker-2] worker got sentinel -- exiting
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] worker exiting after 0 tasks
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] result handler got sentinel
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] worker exiting after 0 tasks
+[2012-02-29 20:28:06,308: INFO/PoolWorker-2] process shutting down
+[2012-02-29 20:28:06,308: INFO/PoolWorker-2] process shutting down
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,308: DEBUG/MainProcess] ensuring that outqueue is not full
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] running the remaining "atexit" finalizers
+[2012-02-29 20:28:06,308: DEBUG/PoolWorker-2] running the remaining "atexit" finalizers
+[2012-02-29 20:28:06,308: DEBUG/MainProcess] ensuring that outqueue is not full
+[2012-02-29 20:28:06,309: INFO/PoolWorker-2] process exiting with exitcode 0
+[2012-02-29 20:28:06,309: INFO/PoolWorker-2] process exiting with exitcode 0
+[2012-02-29 20:28:06,309: DEBUG/MainProcess] result handler exiting: len(cache)=0, thread._state=0
+[2012-02-29 20:28:06,309: DEBUG/MainProcess] result handler exiting: len(cache)=0, thread._state=0
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] task handler exiting
+[2012-02-29 20:28:06,307: DEBUG/MainProcess] task handler exiting
+[2012-02-29 20:28:06,310: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:28:06,310: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:28:06,311: DEBUG/MainProcess] result handler joined
+[2012-02-29 20:28:06,310: DEBUG/PoolWorker-1] worker got sentinel -- exiting
+[2012-02-29 20:28:06,311: DEBUG/MainProcess] result handler joined
+[2012-02-29 20:28:06,310: DEBUG/PoolWorker-1] worker got sentinel -- exiting
+[2012-02-29 20:28:06,311: DEBUG/PoolWorker-1] worker exiting after 0 tasks
+[2012-02-29 20:28:06,311: DEBUG/MainProcess] joining worker 0/2 (<Process(PoolWorker-1, started daemon)>)
+[2012-02-29 20:28:06,311: DEBUG/PoolWorker-1] worker exiting after 0 tasks
+[2012-02-29 20:28:06,311: DEBUG/MainProcess] joining worker 0/2 (<Process(PoolWorker-1, started daemon)>)
+[2012-02-29 20:28:06,311: INFO/PoolWorker-1] process shutting down
+[2012-02-29 20:28:06,311: INFO/PoolWorker-1] process shutting down
+[2012-02-29 20:28:06,311: DEBUG/PoolWorker-1] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,311: DEBUG/PoolWorker-1] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,312: DEBUG/PoolWorker-1] running the remaining "atexit" finalizers
+[2012-02-29 20:28:06,312: DEBUG/PoolWorker-1] running the remaining "atexit" finalizers
+[2012-02-29 20:28:06,312: INFO/PoolWorker-1] process exiting with exitcode 0
+[2012-02-29 20:28:06,312: INFO/PoolWorker-1] process exiting with exitcode 0
+[2012-02-29 20:28:06,313: DEBUG/MainProcess] joining worker 1/2 (<Process(PoolWorker-2, stopped daemon)>)
+[2012-02-29 20:28:06,313: DEBUG/MainProcess] joining worker 1/2 (<Process(PoolWorker-2, stopped daemon)>)
+[2012-02-29 20:28:06,313: DEBUG/MainProcess] Consumer: Closing consumer channel...
+[2012-02-29 20:28:06,314: DEBUG/MainProcess] Consumer: Closing broadcast channel...
+[2012-02-29 20:28:06,315: DEBUG/MainProcess] Consumer: Closing broker connection...
+[2012-02-29 20:28:06,318: INFO/MainProcess] process shutting down
+[2012-02-29 20:28:06,318: INFO/MainProcess] process shutting down
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] running all "atexit" finalizers with priority >= 0
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] finalizing pool
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] finalizing pool
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] helping task handler/workers to finish
+[2012-02-29 20:28:06,318: DEBUG/MainProcess] helping task handler/workers to finish
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] removing tasks from inqueue until task handler finished
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] terminating workers
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] terminating workers
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining task handler
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining result handler
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining pool workers
+[2012-02-29 20:28:06,319: DEBUG/MainProcess] joining pool workers
+[2012-02-29 20:28:06,320: DEBUG/MainProcess] pool workers joined
+[2012-02-29 20:28:06,320: DEBUG/MainProcess] pool workers joined
+[2012-02-29 20:28:06,320: DEBUG/MainProcess] running the remaining "atexit" finalizers
+[2012-02-29 20:28:06,320: DEBUG/MainProcess] running the remaining "atexit" finalizers

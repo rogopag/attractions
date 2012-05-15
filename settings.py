@@ -1,4 +1,21 @@
 # Django settings for attractions project.
+import os
+# Django settings for attractions project.
+import os
+#Celery / Redis configuration
+BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis"
+CELERY_REDIS_HOST = "localhost"
+CELERY_REDIS_PORT = 6379
+CELERY_REDIS_DB = 0
+CELERY_IMPORTS = ("sample.tasks.stream", )
+#CELERY_SEND_TASK_ERROR_EMAILS = True
+#CELERYD_LOG_FILE='/Users/rogopag/Desktop/JOBSTEMP/DEV/attractions_rel/attractions_rel/sample/tasks/celery.log'
+import djcelery
+djcelery.setup_loader()
+
+#Cdelery end
+ROOT_PATH = os.path.dirname(__file__)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -34,7 +51,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Rome'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -113,6 +130,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+	os.path.join(ROOT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
@@ -128,6 +146,7 @@ INSTALLED_APPS = (
 	'djangotoolbox',
 	'django_google_maps',
 	'sample',
+	'djcelery',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
