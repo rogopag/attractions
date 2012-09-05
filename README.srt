@@ -23,6 +23,3 @@ Install the module and the three required modules, go to the admin and create a 
 License
 ====================================================
 Grabber licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
-
-
-
