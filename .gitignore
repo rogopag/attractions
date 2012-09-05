@@ -1,3 +1,7 @@
 *.pyc
 
+.pydevproject
+
+.project
+
 sample/.DS_Store
