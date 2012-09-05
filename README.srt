@@ -7,6 +7,8 @@ By using the multithread module dj-celery, Attractions gives the opportunity to 
 With attractions interface you can set up the boundaries of a certain area with a Google Maps instance and start the collection of the tweets and finally monitor the activity of the Grabber.
 
 This version sits on a mongo-db instance as the db backend, the module needs a Django-non-rel installation that you want to run in virtual environment to avoid conflict with your main Django installation.
+
+If you want to use a normal Django installation use Attractions-rel (https://github.com/rogopag/attractions_rel) which is also best updated.
  
 ====================================================
 Requirements
