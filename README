@@ -9,7 +9,6 @@ If you want to use a normal Django installation use Attractions-rel (https://git
 ====================================================
 Requirements
 ====================================================
-Django 1.4.1
 Django-nonrel (http://www.allbuttonspressed.com/projects/django-nonrel)
 django-google-maps 0.2.1 (http://pypi.python.org/pypi/django-google-maps/0.2.1)
 Celery 3.0 (http://celeryproject.org/)
