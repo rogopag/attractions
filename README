@@ -12,11 +12,12 @@ Requirements
 Django-nonrel (http://www.allbuttonspressed.com/projects/django-nonrel)
 django-google-maps 0.2.1 (http://pypi.python.org/pypi/django-google-maps/0.2.1)
 Celery 3.0 (http://celeryproject.org/)
+tweepy (https://github.com/tweepy/tweepy)
 
 ====================================================
 Usage
 ====================================================
-Install the module and the three required modules, go to the admin and create a new location of your like. Then set up the boundaries and run the grabber.
+Install the module and the 4 required modules, go to the admin and create a new location of your like. Then set up the boundaries and run the grabber.
 
 ====================================================
 License
