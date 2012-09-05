@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 django_google_maps/__init__.pyc
 
 settings.pyc
@@ -53,10 +54,15 @@ urls.pyc
 
 settings.pyc
 
+=======
+sample/scripts/stream.pyc
+
+>>>>>>> ignores
 sample/.DS_Store
 
 sample/scripts/tasks.pyc
 
+<<<<<<< HEAD
 sample/views.pyc
 
 settings.pyc
@@ -142,3 +148,6 @@ sample/models.pyc
 sample/tasks/stream.pyc
 
 sample/views.pyc
+=======
+*.pyc
+>>>>>>> ignores
